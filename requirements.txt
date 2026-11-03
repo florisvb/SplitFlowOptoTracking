@@ -19,6 +19,8 @@ matplotlib
 scikit-learn        # sklearn.preprocessing (autoencoder, several figures)
 seaborn             # fig_4 autoencoder plots
 cvxpy               # unifying-algorithm mixed-integer quadratic program
+statsmodels
+umap-learn          # imported as `umap`
 
 # --- Deep learning (fig_4 autoencoder / triplet VAE) ---
 torch
@@ -49,13 +51,20 @@ python-louvain      # provides `community`, imported by flystat.resampling
 jupyter
 ipykernel
 
+# --- Presentation notebooks (FigureGeneration/Presentation, marimo) ---
+marimo
+imageio-ffmpeg      # bundled ffmpeg binary, used to save .mp4 animations
+
 # --- Public lab / third-party packages ---
-pynumdiff           # https://github.com/florisvb/PyNumDiff (savgoldiff)
+# pynumdiff must be < 0.3: the repo and braid_tools use the old API
+# (savgoldiff(x, dt, [params]), finite_difference.second_order, meandiff),
+# which 0.3 removed. 0.2.x still accepts it (with deprecation warnings).
+pynumdiff==0.2.4    # https://github.com/florisvb/PyNumDiff (savgoldiff)
 figurefirst         # https://github.com/FlyRanch/figurefirst (SVG figure layout)
 
 # --- Private lab repositories (require access) ---
 # Provides: unifying_algo_analysis (uaa), unifying_algo_plots (uap)
-git+https://github.com/vanbreugel-lab/align_course_direction_analysis.git@1c1cf203ee0bbcc0287752a58943a52930eeb9d4
+git+https://github.com/vanbreugel-lab/align_course_direction_analysis.git@5f66655cf973b6e3d4b27797136dfdf36632be70
 # Provides: braid_analysis.flymath, braid_analysis.braid_analysis_plots (repo: braid_tools)
 git+https://github.com/vanbreugel-lab/braid_tools.git
 # Provides: fly_plot_lib.plot (fpl)
