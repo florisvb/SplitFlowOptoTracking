@@ -134,3 +134,8 @@ FigureGeneration/Main/fig_1_math_figure/from_jaleesa/
 
 # find_augmented_shams data outputs (reference-only; the merged file lives in Data/Experimental_Fly_Data/)
 FigureGeneration/Main/fig_5_unifying_algo_analysis/analysis_scripts/find_augmented_shams/*.parquet
+
+# Presentation animations: rendered PNG frame sequences (~300 MB each; regenerate from notebooks) and marimo session cache
+FigureGeneration/Presentation/**/*_frames/
+FigureGeneration/Presentation/**/*_frames_test/
+__marimo__/
