@@ -1,3 +1,10 @@
+# Coordinate convention for affine fits (matches align_course_direction_analysis):
+# an angle theta is projected as xy = [sin(theta), cos(theta)], an affine matrix AM acts on that
+# vector, and angles are recovered as arctan2(xy[0], xy[1]).
+# Switched from [cos, sin] / arctan2(xy[1], xy[0]) on 2026-11-03; the result parquets in
+# Data/unifying_algo_results were converted to this convention at the same time
+# (see Data/unifying_algo_results/AM_CONVENTION_README.md).
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -109,12 +116,12 @@ def find_affine_transform(course, slope, intercept, min_ix, max_ix, abs_min_ix, 
     abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
     abs_course_fit_x = np.cos(abs_course_fit)
     abs_course_fit_y = np.sin(abs_course_fit)
-    abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+    abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
     
     abs_course_data = course[ix_all]
     abs_course_data_x = np.cos(abs_course_data)
     abs_course_data_y = np.sin(abs_course_data)
-    abs_course_data_xy = np.vstack((abs_course_data_x, abs_course_data_y))
+    abs_course_data_xy = np.vstack((abs_course_data_y, abs_course_data_x))
 
     if use_ix_limits:
         AM = abs_course_data_xy[:,min_ix:max_ix]@np.linalg.pinv(abs_course_fit_xy[:,min_ix:max_ix])
@@ -123,7 +130,7 @@ def find_affine_transform(course, slope, intercept, min_ix, max_ix, abs_min_ix, 
     
     if plot:
       warped_fit = AM@abs_course_fit_xy
-      course_warped_fit = np.arctan2(warped_fit[1,:], warped_fit[0,:])
+      course_warped_fit = np.arctan2(warped_fit[0,:], warped_fit[1,:])
     
       plt.plot(ix_all, pred_wrap, '.')
       plt.plot(ix_all, course, '.')
@@ -159,12 +166,12 @@ def find_affine_transform_cvx(course, slope, intercept, min_ix, max_ix, abs_min_
         abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
         abs_course_fit_x = np.cos(abs_course_fit)
         abs_course_fit_y = np.sin(abs_course_fit)
-        abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+        abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
         
         
         abs_course_data_x = np.cos(abs_course_data)
         abs_course_data_y = np.sin(abs_course_data)
-        abs_course_data_xy = np.vstack((abs_course_data_x, abs_course_data_y))
+        abs_course_data_xy = np.vstack((abs_course_data_y, abs_course_data_x))
         
         if use_ix_limits:
             abs_course_data_xy = abs_course_data_xy[:,min_ix:max_ix]
@@ -499,10 +506,10 @@ def get_true_vs_predicted(trajec, unifying_algo_fit, bootstrap_n, plot=True, ax=
     abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
     abs_course_fit_x = np.cos(abs_course_fit)
     abs_course_fit_y = np.sin(abs_course_fit)
-    abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+    abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
     
     warped_fit = AM@abs_course_fit_xy
-    course_warped_fit = np.arctan2(warped_fit[1,:], warped_fit[0,:])
+    course_warped_fit = np.arctan2(warped_fit[0,:], warped_fit[1,:])
 
     if use_ix_limits:
         rmse = np.sqrt(np.mean( angle_distance(course[min_ix:max_ix], course_warped_fit[min_ix:max_ix])**2 ) )
@@ -623,7 +630,7 @@ def evaluate_miop_affine_fit(course, slope, intercept, AM, min_ix=0, max_ix=None
     abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
     abs_course_fit_x = np.cos(abs_course_fit)
     abs_course_fit_y = np.sin(abs_course_fit)
-    abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+    abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
     
     if AM.shape[0] == 2:
         warped_fit = AM@abs_course_fit_xy
@@ -631,7 +638,7 @@ def evaluate_miop_affine_fit(course, slope, intercept, AM, min_ix=0, max_ix=None
         abs_course_fit_xy_aug = np.vstack((abs_course_fit_xy, np.ones_like(abs_course_fit_xy[0,:])))
         warped_fit = AM@abs_course_fit_xy_aug
 
-    course_warped_fit = np.arctan2(warped_fit[1,:], warped_fit[0,:])
+    course_warped_fit = np.arctan2(warped_fit[0,:], warped_fit[1,:])
 
     rmse = np.sqrt(np.mean( angle_distance(course[min_ix:max_ix], course_warped_fit[min_ix:max_ix])**2 ) )
     #huber = huber_loss(angle_distance(course[min_ix:max_ix], course_warped_fit[min_ix:max_ix]), np.zeros_like(course[min_ix:max_ix]), 0.5)
@@ -670,15 +677,15 @@ def evaluate_miop_affine_fit(course, slope, intercept, AM, min_ix=0, max_ix=None
 #     abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
 #     abs_course_fit_x = np.cos(abs_course_fit)
 #     abs_course_fit_y = np.sin(abs_course_fit)
-#     abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+#     abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
     
 #     abs_course_data = course #[ix_all]
 #     abs_course_data_x = np.cos(abs_course_data)
 #     abs_course_data_y = np.sin(abs_course_data)
-#     abs_course_data_xy = np.vstack((abs_course_data_x, abs_course_data_y))
+#     abs_course_data_xy = np.vstack((abs_course_data_y, abs_course_data_x))
     
 #     warped_fit = AM@abs_course_fit_xy
-#     course_warped_fit = np.arctan2(warped_fit[1,:], warped_fit[0,:])
+#     course_warped_fit = np.arctan2(warped_fit[0,:], warped_fit[1,:])
 
 #     ax.plot(ix_all, course, '.', label='raw data', color='black', markersize=markersize)
 #     ax.plot(ix_all[abs_min_ix:], pred_wrap[abs_min_ix:], '.', label='line fit', color='blue')
@@ -842,10 +849,10 @@ def run_model_alignment_analysis(modelfit_df_fname, braid_df_fname, ax_course=No
     # abs_course_fit = group_pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
     # abs_course_fit_x = np.cos(abs_course_fit)
     # abs_course_fit_y = np.sin(abs_course_fit)
-    # abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+    # abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
     
     # warped_fit = group_AM@abs_course_fit_xy
-    # course_warped_fit = np.arctan2(warped_fit[1,:], warped_fit[0,:])
+    # course_warped_fit = np.arctan2(warped_fit[0,:], warped_fit[1,:])
 
     # if show_affine_fit:
     #     ax.plot(np.ravel(ix_arr), course_warped_fit, '.', markerfacecolor='magenta', markeredgecolor='none')
@@ -912,12 +919,12 @@ def plot_miop_affine_fit(course, slope, intercept, min_ix=0, max_ix=None, abs_mi
     abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
     abs_course_fit_x = np.cos(abs_course_fit)
     abs_course_fit_y = np.sin(abs_course_fit)
-    abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+    abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
     
     abs_course_data = course #[ix_all]
     abs_course_data_x = np.cos(abs_course_data)
     abs_course_data_y = np.sin(abs_course_data)
-    abs_course_data_xy = np.vstack((abs_course_data_x, abs_course_data_y))
+    abs_course_data_xy = np.vstack((abs_course_data_y, abs_course_data_x))
     
     ax.scatter(ix_all - shift_ix, course,
                c='black',
@@ -989,14 +996,14 @@ def plot_miop_affine_fit_from_model(modelfit_trajec_best, trajec, ax=None, N=200
 
     course_best_rmse = course[min_ix:max_ix]
     pred_wrap_best_rmse = pred_wrap[min_ix:max_ix]
-    pred_wrap_best_rmse_xy = np.vstack((np.cos(pred_wrap_best_rmse), np.sin(pred_wrap_best_rmse)))
+    pred_wrap_best_rmse_xy = np.vstack((np.sin(pred_wrap_best_rmse), np.cos(pred_wrap_best_rmse)))
     AM_0_0 = modelfit_trajec_best.AM_0_0
     AM_0_1 = modelfit_trajec_best.AM_0_1
     AM_1_0 = modelfit_trajec_best.AM_1_0
     AM_1_1 = modelfit_trajec_best.AM_1_1
     AM = np.array([[AM_0_0, AM_0_1], [AM_1_0, AM_1_1]])
     warped_pred_wrap_best_rmse_xy = AM@pred_wrap_best_rmse_xy
-    warped_pred_course = np.arctan2(warped_pred_wrap_best_rmse_xy[1,:], warped_pred_wrap_best_rmse_xy[0,:])
+    warped_pred_course = np.arctan2(warped_pred_wrap_best_rmse_xy[0,:], warped_pred_wrap_best_rmse_xy[1,:])
     rho = get_circular_rho(course_best_rmse, warped_pred_course)
 
     return aligned_course, aligned_ix, rho
@@ -1034,12 +1041,12 @@ def find_affine_transform(course, ix_all, slope, intercept):
     abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
     abs_course_fit_x = np.cos(abs_course_fit)
     abs_course_fit_y = np.sin(abs_course_fit)
-    abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+    abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
     
     abs_course_data = course
     abs_course_data_x = np.cos(abs_course_data)
     abs_course_data_y = np.sin(abs_course_data)
-    abs_course_data_xy = np.vstack((abs_course_data_x, abs_course_data_y))
+    abs_course_data_xy = np.vstack((abs_course_data_y, abs_course_data_x))
 
     AM = abs_course_data_xy@np.linalg.pinv(abs_course_fit_xy)
 
@@ -1084,10 +1091,10 @@ def get_stats(course, ix_arr, slope, AM, intercept=0, aligned_ixs=None):
         abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
         abs_course_fit_x = np.cos(abs_course_fit)
         abs_course_fit_y = np.sin(abs_course_fit)
-        abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+        abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
         
         warped_fit = AM@abs_course_fit_xy
-        course_warped_fit = np.arctan2(warped_fit[1,:], warped_fit[0,:])
+        course_warped_fit = np.arctan2(warped_fit[0,:], warped_fit[1,:])
 
         # find rho in coordinates of the data
         true_values = aligned_courses_arr
@@ -1098,9 +1105,9 @@ def get_stats(course, ix_arr, slope, AM, intercept=0, aligned_ixs=None):
         rmse = np.sqrt(np.mean(errors**2))
 
         # find rho in the coordiantes of the fit -- more uniform distribution
-        # true_xy = np.vstack((np.cos(aligned_courses_arr), np.sin(aligned_courses_arr)))
+        # true_xy = np.vstack((np.sin(aligned_courses_arr), np.cos(aligned_courses_arr)))
         # true_xy_unwarp = np.linalg.inv(AM)@true_xy
-        # true_unwarped = np.arctan2(true_xy_unwarp[1,:], true_xy_unwarp[0,:])
+        # true_unwarped = np.arctan2(true_xy_unwarp[0,:], true_xy_unwarp[1,:])
         # pred_values = slope*ix_arr
         # rho = get_circular_rho(true_unwarped, pred_values)
 
@@ -1128,9 +1135,9 @@ def get_stats(course, ix_arr, slope, AM, intercept=0, aligned_ixs=None):
 
 
             line = slope[i]*np.hstack(ix_arr_i)
-            line_xy = np.vstack((np.cos(line), np.sin(line)))
+            line_xy = np.vstack((np.sin(line), np.cos(line)))
             warped_line = AM[i]@line_xy
-            predicted_values = np.arctan2(warped_line[1,:], warped_line[0,:])
+            predicted_values = np.arctan2(warped_line[0,:], warped_line[1,:])
 
 
             true_values = aligned_courses_arr_i
@@ -1140,10 +1147,10 @@ def get_stats(course, ix_arr, slope, AM, intercept=0, aligned_ixs=None):
             # abs_course_fit = pred_wrap #pred = (slope*ii + intercept + pis*2*np.pi).value
             # abs_course_fit_x = np.cos(abs_course_fit)
             # abs_course_fit_y = np.sin(abs_course_fit)
-            # abs_course_fit_xy = np.vstack((abs_course_fit_x, abs_course_fit_y))
+            # abs_course_fit_xy = np.vstack((abs_course_fit_y, abs_course_fit_x))
             
             # warped_fit = AM[i]@abs_course_fit_xy
-            # course_warped_fit = np.arctan2(warped_fit[1,:], warped_fit[0,:])
+            # course_warped_fit = np.arctan2(warped_fit[0,:], warped_fit[1,:])
 
             # true_values = aligned_courses_arr_i
             # errors = angle_distance(np.ravel(true_values), np.ravel(course_warped_fit))
@@ -1158,9 +1165,9 @@ def get_stats(course, ix_arr, slope, AM, intercept=0, aligned_ixs=None):
 
             
             # find rho in the coordiantes of the fit -- more uniform distribution
-            # true_xy = np.vstack((np.cos(aligned_courses_arr_i), np.sin(aligned_courses_arr_i)))
+            # true_xy = np.vstack((np.sin(aligned_courses_arr_i), np.cos(aligned_courses_arr_i)))
             # true_xy_unwarp = np.linalg.pinv(AM[i])@true_xy
-            # true_unwarped = np.arctan2(true_xy_unwarp[1,:], true_xy_unwarp[0,:])
+            # true_unwarped = np.arctan2(true_xy_unwarp[0,:], true_xy_unwarp[1,:])
             # pred_values = (slope[i]*ix_arr_i + intercept)
             # rho = get_circular_rho(true_unwarped, pred_values)
 
