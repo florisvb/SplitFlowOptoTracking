@@ -376,7 +376,7 @@ def save_figure(layout, fifi_figure_label, figure_name=FIGURE_NAME):
 # R2-only distribution plots (style of Figure 5 panel D: fpl.scatter_box_violin_distribution)
 # --------------------------------------------------------------------------------------------------
 R2_FIGURE_NAME = 'unifying_analysis_translationTrue.svg'  # Figure 5
-R2_LABEL = 'Circular $R^2$\nto mean model'
+R2_LABEL = 'Circular R²\nto mean model'  # plain text so it renders in Helvetica like the rest of Figure 5
 # Symmetric R2 axis for the distribution plots: R2 in [0, 1] gets the same height as R2 in [R2_FLOOR, 0],
 # so 0 sits in the middle of the axis. R2_FLOOR = 1 - e^5.5 (about -244), the same lower limit as the scatter plots.
 R2_DIST_POS_SCALE = 5.5
