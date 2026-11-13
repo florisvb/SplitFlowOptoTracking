@@ -17,24 +17,24 @@ Data/
 ├── download_from_dryad_and_unzip_here.txt   ← this file
 │
 ├── wind_tunnel_data/                         ← from wind_tunnel_data.zip
-│   ├── laminar/
-│   │   ├── df_0.csv
-│   │   ├── df_10.csv
-│   │   └── ...  (df_40 used in Figure 1)
-│   ├── outdoor/
-│   │   └── ...
-│   └── split_flow/
-│       ├── df_H_RC.csv                       ← used in Figure 1
-│       ├── df_H_LC.csv                       ← used in Figure 1
-│       └── ...
+│   ├── laminar_flow/
+│   │   ├── laminar_0.csv … laminar_100.csv
+│   │   └── laminar_40.csv                    ← used in Figure 2
+│   ├── outdoor_data/
+│   │   └── df_TNF.csv                        ← used in Figure 2
+│   └── 10_hz_splitflowdata/
+│       ├── H_RC.csv                          ← used in Figure 2
+│       ├── H_LC.csv                          ← used in Figure 2
+│       └── ...  (H_*, V_* sensor positions)
 │
-├── CFD/                                      ← from 2D_PlanarSlices.zip,
-│   │                                            2D_PlumeData.zip,
+├── 2D_PlanarSlices/                          ← from 2D_PlanarSlices.zip; it contains
+│   ├── XY_steady.zip                            three zips: unzip each in place
+│   ├── XY_unsteady.zip
+│   ├── XZslice.zip
+│   └── XZslice/                              ← unzipped; used in Figure 2 (panel J)
+│
+├── CFD/                                      ← from 2D_PlumeData.zip,
 │   │                                            3D_vel_1.zip – 3D_vel_6.zip
-│   ├── 2D_PlanarSlices/
-│   │   ├── XY_steady/
-│   │   ├── XY_unsteady/
-│   │   └── XZslice/
 │   ├── 2D_PlumeData/
 │   │   ├── XY_steady_plume/
 │   │   ├── XY_unsteady_plume/

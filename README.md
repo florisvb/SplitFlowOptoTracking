@@ -130,9 +130,9 @@ directory (Jupyter's default), so no path edits are needed.
 ├── Data/
 │   ├── download_from_dryad_and_unzip_here.txt   # Download instructions + expected structure
 │   │   [download from Dryad and unzip into the directories as shown below]
-│   ├── wind_tunnel_data/               # Wind speed measurements (laminar, outdoor, split flow)
+│   ├── wind_tunnel_data/               # Wind speed measurements (laminar_flow, outdoor_data, 10_hz_splitflowdata)
+│   ├── 2D_PlanarSlices/                # 2D CFD velocity slices; unzip XY_steady/XY_unsteady/XZslice.zip in place
 │   ├── CFD/
-│   │   ├── 2D_PlanarSlices/            # 2D velocity field slices (XY steady/unsteady, XZ)
 │   │   ├── 2D_PlumeData/               # 2D odor concentration slices -- used in older version of paper
 │   │   └── 3D_Velocity_Fields/         # 3D velocity fields, 20s simulation (6 archives)
 │   ├── Experimental_Fly_Data/         # full/raw fly datasets, flat (merged raw_data + preprocessed_hdfs):

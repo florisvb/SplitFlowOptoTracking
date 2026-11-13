@@ -139,3 +139,6 @@ FigureGeneration/Main/fig_5_unifying_algo_analysis/analysis_scripts/find_augment
 FigureGeneration/Presentation/**/*_frames/
 FigureGeneration/Presentation/**/*_frames_test/
 __marimo__/
+
+# Executed notebooks + logs from RunFigures/*.sh
+RunFigures/logs/

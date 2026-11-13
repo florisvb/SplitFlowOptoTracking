@@ -5,7 +5,7 @@ used here by own_fit_helper.py for file lookup, data loading, plotting constants
 Computation and plotting follow (and are duplicated from)
     FigureGeneration/Supplemental/sup_fig_unifying_analysis/D_slope_vs_r2_flies_allwtsplitflow.ipynb
     FigureGeneration/Supplemental/supp_fig_variable_wind_unifying/E_slope_vs_rmse_var_wind.ipynb
-    Supplemental_UAA_Synthetic_Shuffled/Supplemental_Figure_Shuffled_Synthetic_UAA/E_slope_vs_r2_shuffled_synthetic.ipynb
+    FigureGeneration/Supplemental/Supplemental_Figure_Shuffled_Synthetic_UAA/E_slope_vs_r2_shuffled_synthetic.ipynb
 (PERIOD_SHIFTS = [0] by default; a per-dataset list can be passed to compute_slope_r2,
 as notebook E does for variable-wind flash at 60 cm/s).
 
@@ -28,7 +28,7 @@ TRANSLATION = True
 
 DATA_DIR = Path('../../../Data')
 TRAJEC_DIR = DATA_DIR / 'Experimental_Fly_Data'
-SHUFFLED_SYNTHETIC_DIR = Path('../../../Supplemental_UAA_Synthetic_Shuffled/Supplemental_Figure_Shuffled_Synthetic_UAA')
+SHUFFLED_SYNTHETIC_DIR = Path('../Supplemental_Figure_Shuffled_Synthetic_UAA')
 
 # Average model window: columns of the aligned arrays (-300..300 samples at 0.01 s), 200:400 = aligned time -1..1 s
 ROI = slice(200, 400)
