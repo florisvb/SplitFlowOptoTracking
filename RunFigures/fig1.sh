@@ -11,7 +11,10 @@ D=FigureGeneration/Main/fig_1_math_figure
 require_latex  # B sets text.usetex=True
 
 run_notebook "$D" A_figure_math_affine_explanation.ipynb
-run_notebook "$D" B_figure_math_consolidate_params.ipynb
+# B draws one wind scenario (layer) per run; it reseeds np.random, so output is reproducible.
+for scenario in stillair laminar unsteady low; do
+    run_notebook "$D" B_figure_math_consolidate_params.ipynb FIG_SCENARIO=$scenario
+done
 
 # Not included: C_f1_example_trajectories.ipynb draws into an "algorithms" layer of
 # unifying_math_v2.svg, which is not part of the current Figure 1 (unifying_math_v4.svg).

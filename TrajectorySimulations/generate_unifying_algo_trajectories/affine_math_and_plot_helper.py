@@ -71,7 +71,7 @@ def mean_angle(angle):
 def get_wind(scenario, RANDOMNESS=False, SMOOTHING_WINDOW=11, dt=0.01, length=5):
     tstart = 5
     if RANDOMNESS:
-        tstart = np.random.uniform(2, 14, 1)
+        tstart = np.random.uniform(2, 14)  # scalar: np.arange rejects a length-1 array (NumPy 2)
     interp_t = np.arange(tstart, tstart+length, dt) 
     if len(interp_t) > int(length/dt):
         interp_t = interp_t[0:int(length/dt)]
