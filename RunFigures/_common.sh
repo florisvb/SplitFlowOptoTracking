@@ -37,26 +37,35 @@ end_figure() {
     echo "=== [$FIGURE_ID] finished in $((SECONDS - FIGURE_T0)) s"
 }
 
-# run_notebook <dir relative to repo root> <notebook.ipynb>
+# run_notebook <dir relative to repo root> <notebook.ipynb> [NAME=value ...]
 # Executes the notebook from its own directory (the notebooks use relative
 # paths). The executed copy and the nbconvert log go to $LOG_DIR/<figure id>/,
 # so the source notebook is not modified.
+# NAME=value pairs are set as environment variables for that run. Notebooks that
+# render one layer per run read them in their parameter cell, e.g.
+#   run_notebook "$D" A.ipynb FIG_LABEL=sham
+# The values are appended to the log/output name (A_sham.log).
 run_notebook() {
-    local rel_dir="$1" nb="$2"
-    local dir="$REPO_ROOT/$rel_dir" name="${2%.ipynb}"
+    local rel_dir="$1" nb="$2"; shift 2
+    local params=("$@") p
+    local dir="$REPO_ROOT/$rel_dir" name="${nb%.ipynb}"
+    for p in ${params[@]+"${params[@]}"}; do
+        [[ "$p" == *=* ]] || { echo "ERROR: run_notebook: expected NAME=value, got '$p'" >&2; return 1; }
+        name+="_${p#*=}"
+    done
     local out="$LOG_DIR/$FIGURE_ID"
     if [[ ! -f "$dir/$nb" ]]; then
         echo "ERROR: notebook not found: $rel_dir/$nb" >&2
         return 1
     fi
     if [[ "$DRY_RUN" == 1 ]]; then
-        echo "  [dry-run] $rel_dir/$nb"
+        echo "  [dry-run] $rel_dir/$nb $*"
         return 0
     fi
     mkdir -p "$out"
-    echo "  -> $rel_dir/$nb"
+    echo "  -> $rel_dir/$nb $*"
     local t0=$SECONDS
-    if ! ( cd "$dir" && jupyter nbconvert --to notebook --execute "$nb" \
+    if ! ( cd "$dir" && env ${params[@]+"${params[@]}"} jupyter nbconvert --to notebook --execute "$nb" \
               --ExecutePreprocessor.timeout="$NB_TIMEOUT" \
               --ExecutePreprocessor.kernel_name=python3 \
               --output-dir "$out" --output "$name" ) > "$out/$name.log" 2>&1; then
