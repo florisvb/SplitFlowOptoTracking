@@ -94,7 +94,7 @@ def _plot_trajectory(df, traj_id, ax, xlim, ylim, lw=0.5, arrow_length=0.04,
         label = f"{int(bar_size * 100)} cm"
         ax.text((bar_x_start + bar_x_end) / 2,
                 bar_y - 0.03 * (y1 - y0),
-                label, ha="center", va="top", fontsize=5.5, color="k")
+                label, ha="center", va="top", fontsize=6, color="k")
 
 
 # ---------------------------------------------------------------------------
@@ -217,7 +217,7 @@ for i, fs in enumerate(FAN_SPEEDS):
         FAN_SPEED_LABELS[fs],
         transform=ax_title.transAxes,
         ha="center", va="bottom",
-        fontsize=9, fontweight="bold",
+        fontsize=8, fontweight="bold",
         fontfamily="Helvetica",
     )
     ax_title.axis("off")
@@ -242,7 +242,7 @@ legend_handles = [
 fig.legend(
     handles=legend_handles,
     loc="lower center", ncol=3,
-    fontsize=7, frameon=False,
+    fontsize=6, frameon=False,
     bbox_to_anchor=(0.5, 0.02),
 )
 
@@ -254,6 +254,6 @@ OUT_PATH = os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
     "variablewind_sample_trajectories.svg",
 )
-fig.savefig(OUT_PATH, format="svg", bbox_inches="tight")
+fig.savefig(OUT_PATH, format="svg")  # full 8.5x11 in page, like the other figures
 plt.close(fig)
 print(f"Saved: {OUT_PATH}")
