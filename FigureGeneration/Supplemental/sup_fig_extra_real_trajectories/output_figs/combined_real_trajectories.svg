@@ -190,18 +190,18 @@
          font-variant="normal"
          font-weight="400"
          font-stretch="normal"
-         font-size="55px"
+         font-size="50.746013px"
          text-anchor="start"
          direction="ltr"
          writing-mode="lr-tb"
          unicode-bidi="normal"
          text-decoration="none"
-         transform="scale(0.92265512,1.0838286)"
+         transform="matrix(1.083829,0,0,1.083829,7.982359,0)"
          id="text1044-8"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-decoration:none;text-decoration-line:none;stroke-width:0.131741;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.535929px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-decoration:none;text-decoration-line:none;stroke-width:0.131741;stroke-linecap:butt;stroke-linejoin:round"
          x="-49.526505"
          y="549.93829"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.131741"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.535929px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.131741"
            id="tspan13168-5">x</tspan></text>
       <text
          fill="#000000"
@@ -211,18 +211,18 @@
          font-variant="normal"
          font-weight="400"
          font-stretch="normal"
-         font-size="55px"
+         font-size="50.746013px"
          text-anchor="start"
          direction="ltr"
          writing-mode="lr-tb"
          unicode-bidi="normal"
          text-decoration="none"
          id="text1046-8"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-decoration:none;text-decoration-line:none;stroke-width:0.131741;stroke-linecap:butt;stroke-linejoin:round"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.535929px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-decoration:none;text-decoration-line:none;stroke-width:0.131741;stroke-linecap:butt;stroke-linejoin:round"
          x="-62.261517"
          y="539.90259"
-         transform="scale(0.92265512,1.0838286)"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.131741"
+         transform="matrix(1.083829,0,0,1.083829,10.034905,0)"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.535929px;font-family:Helvetica;-inkscape-font-specification:Helvetica;stroke-width:0.131741"
            id="tspan12272-30">y</tspan></text>
     </g>
     <g
@@ -233,8 +233,7 @@
         <!-- Steady flow (z&lt;0.25m) -->
         <g
            transform="matrix(0.08,0,0,-0.08,76.132834,13.095)"
-           id="g22">
-          <defs
+           id="g22"><defs
              id="defs2">
             <path
                id="Helvetica-53"
@@ -316,91 +315,7 @@
                id="Helvetica-29"
                d="m 222,-1306 q 497,968 641,1412 218,672 218,1575 0,903 -253,1653 -156,463 -615,1332 h 378 q 481,-769 582,-949 102,-179 221,-495 150,-391 214,-772 64,-381 64,-734 0,-925 -294,-1650 -184,-466 -765,-1372 z"
                transform="scale(0.015625)" />
-          </defs>
-          <use
-             xlink:href="#Helvetica-53"
-             id="use2" />
-          <use
-             xlink:href="#Helvetica-74"
-             transform="translate(66.699219)"
-             id="use3" />
-          <use
-             xlink:href="#Helvetica-65"
-             transform="translate(94.482422)"
-             id="use4" />
-          <use
-             xlink:href="#Helvetica-61"
-             transform="translate(150.09766)"
-             id="use5" />
-          <use
-             xlink:href="#Helvetica-64"
-             transform="translate(205.71289)"
-             id="use6" />
-          <use
-             xlink:href="#Helvetica-79"
-             transform="translate(261.32812)"
-             id="use7" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(311.32812)"
-             id="use8" />
-          <use
-             xlink:href="#Helvetica-66"
-             transform="translate(339.11133)"
-             id="use9" />
-          <use
-             xlink:href="#Helvetica-6c"
-             transform="translate(366.89453)"
-             id="use10" />
-          <use
-             xlink:href="#Helvetica-6f"
-             transform="translate(389.11133)"
-             id="use11" />
-          <use
-             xlink:href="#Helvetica-77"
-             transform="translate(444.72656)"
-             id="use12" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(516.94336)"
-             id="use13" />
-          <use
-             xlink:href="#Helvetica-28"
-             transform="translate(544.72656)"
-             id="use14" />
-          <use
-             xlink:href="#Helvetica-7a"
-             transform="translate(578.02734)"
-             id="use15" />
-          <use
-             xlink:href="#Helvetica-3c"
-             transform="translate(628.02734)"
-             id="use16" />
-          <use
-             xlink:href="#Helvetica-30"
-             transform="translate(686.42578)"
-             id="use17" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(742.04102)"
-             id="use18" />
-          <use
-             xlink:href="#Helvetica-32"
-             transform="translate(769.82422)"
-             id="use19" />
-          <use
-             xlink:href="#Helvetica-35"
-             transform="translate(825.43945)"
-             id="use20" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(881.05469)"
-             id="use21" />
-          <use
-             xlink:href="#Helvetica-29"
-             transform="translate(964.35547)"
-             id="use22" />
-        </g>
+          </defs></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,116.039084,13.095)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g22-txt">Steady flow (z&lt;0.25m)</text>
       </g>
     </g>
     <g
@@ -726,8 +641,7 @@
         <!-- Unsteady flow (z&lt;0.25m) -->
         <g
            transform="matrix(0.08,0,0,-0.08,322.01342,13.095)"
-           id="g79">
-          <defs
+           id="g79"><defs
              id="defs57">
             <path
                id="Helvetica-55"
@@ -741,99 +655,7 @@
                id="Helvetica-73"
                d="m 747,1050 q 25,-281 141,-431 212,-272 737,-272 313,0 550,136 238,136 238,420 0,216 -191,328 -122,69 -481,160 l -447,112 q -428,106 -631,238 -363,228 -363,631 0,475 342,768 342,294 921,294 756,0 1090,-443 210,-282 203,-607 h -531 q -16,191 -134,347 -194,222 -672,222 -319,0 -483,-122 -164,-122 -164,-322 0,-218 216,-350 125,-78 368,-137 l 372,-91 q 606,-147 813,-284 328,-216 328,-678 0,-447 -339,-772 -339,-325 -1033,-325 -747,0 -1058,339 -311,339 -333,839 z m 831,2378 z"
                transform="scale(0.015625)" />
-          </defs>
-          <use
-             xlink:href="#Helvetica-55"
-             id="use57" />
-          <use
-             xlink:href="#Helvetica-6e"
-             transform="translate(72.216797)"
-             id="use58" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(127.83203)"
-             id="use59" />
-          <use
-             xlink:href="#Helvetica-74"
-             transform="translate(177.83203)"
-             id="use60" />
-          <use
-             xlink:href="#Helvetica-65"
-             transform="translate(205.61523)"
-             id="use61" />
-          <use
-             xlink:href="#Helvetica-61"
-             transform="translate(261.23047)"
-             id="use62" />
-          <use
-             xlink:href="#Helvetica-64"
-             transform="translate(316.8457)"
-             id="use63" />
-          <use
-             xlink:href="#Helvetica-79"
-             transform="translate(372.46094)"
-             id="use64" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(422.46094)"
-             id="use65" />
-          <use
-             xlink:href="#Helvetica-66"
-             transform="translate(450.24414)"
-             id="use66" />
-          <use
-             xlink:href="#Helvetica-6c"
-             transform="translate(478.02734)"
-             id="use67" />
-          <use
-             xlink:href="#Helvetica-6f"
-             transform="translate(500.24414)"
-             id="use68" />
-          <use
-             xlink:href="#Helvetica-77"
-             transform="translate(555.85937)"
-             id="use69" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(628.07617)"
-             id="use70" />
-          <use
-             xlink:href="#Helvetica-28"
-             transform="translate(655.85937)"
-             id="use71" />
-          <use
-             xlink:href="#Helvetica-7a"
-             transform="translate(689.16016)"
-             id="use72" />
-          <use
-             xlink:href="#Helvetica-3c"
-             transform="translate(739.16016)"
-             id="use73" />
-          <use
-             xlink:href="#Helvetica-30"
-             transform="translate(797.55859)"
-             id="use74" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(853.17383)"
-             id="use75" />
-          <use
-             xlink:href="#Helvetica-32"
-             transform="translate(880.95703)"
-             id="use76" />
-          <use
-             xlink:href="#Helvetica-35"
-             transform="translate(936.57227)"
-             id="use77" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(992.1875)"
-             id="use78" />
-          <use
-             xlink:href="#Helvetica-29"
-             transform="translate(1075.4883)"
-             id="use79" />
-        </g>
+          </defs></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,366.364982,13.095)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g79-txt">Unsteady flow (z&lt;0.25m)</text>
       </g>
     </g>
     <g
@@ -1159,8 +981,7 @@
         <!-- Laminar flow (0.4 m/s) -->
         <g
            transform="matrix(0.08,0,0,-0.08,76.473459,149.34632)"
-           id="g135">
-          <defs
+           id="g135"><defs
              id="defs114">
             <path
                id="Helvetica-4c"
@@ -1182,95 +1003,7 @@
                id="Helvetica-2f"
                d="m 1456,4591 h 475 L 475,0 H 0 Z"
                transform="scale(0.015625)" />
-          </defs>
-          <use
-             xlink:href="#Helvetica-4c"
-             id="use114" />
-          <use
-             xlink:href="#Helvetica-61"
-             transform="translate(55.615234)"
-             id="use115" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(111.23047)"
-             id="use116" />
-          <use
-             xlink:href="#Helvetica-69"
-             transform="translate(194.53125)"
-             id="use117" />
-          <use
-             xlink:href="#Helvetica-6e"
-             transform="translate(216.74805)"
-             id="use118" />
-          <use
-             xlink:href="#Helvetica-61"
-             transform="translate(272.36328)"
-             id="use119" />
-          <use
-             xlink:href="#Helvetica-72"
-             transform="translate(327.97852)"
-             id="use120" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(361.2793)"
-             id="use121" />
-          <use
-             xlink:href="#Helvetica-66"
-             transform="translate(389.0625)"
-             id="use122" />
-          <use
-             xlink:href="#Helvetica-6c"
-             transform="translate(416.8457)"
-             id="use123" />
-          <use
-             xlink:href="#Helvetica-6f"
-             transform="translate(439.0625)"
-             id="use124" />
-          <use
-             xlink:href="#Helvetica-77"
-             transform="translate(494.67773)"
-             id="use125" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(566.89453)"
-             id="use126" />
-          <use
-             xlink:href="#Helvetica-28"
-             transform="translate(594.67773)"
-             id="use127" />
-          <use
-             xlink:href="#Helvetica-30"
-             transform="translate(627.97852)"
-             id="use128" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(683.59375)"
-             id="use129" />
-          <use
-             xlink:href="#Helvetica-34"
-             transform="translate(711.37695)"
-             id="use130" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(766.99219)"
-             id="use131" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(794.77539)"
-             id="use132" />
-          <use
-             xlink:href="#Helvetica-2f"
-             transform="translate(878.07617)"
-             id="use133" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(905.85937)"
-             id="use134" />
-          <use
-             xlink:href="#Helvetica-29"
-             transform="translate(955.85937)"
-             id="use135" />
-        </g>
+          </defs></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,116.039865,149.34632)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g135-txt">Laminar flow (0.4 m/s)</text>
       </g>
     </g>
     <g
@@ -1596,43 +1329,7 @@
         <!-- Still air -->
         <g
            transform="matrix(0.08,0,0,-0.08,354.36092,149.34632)"
-           id="g178">
-          <use
-             xlink:href="#Helvetica-53"
-             id="use170" />
-          <use
-             xlink:href="#Helvetica-74"
-             transform="translate(66.699219)"
-             id="use171" />
-          <use
-             xlink:href="#Helvetica-69"
-             transform="translate(94.482422)"
-             id="use172" />
-          <use
-             xlink:href="#Helvetica-6c"
-             transform="translate(116.69922)"
-             id="use173" />
-          <use
-             xlink:href="#Helvetica-6c"
-             transform="translate(138.91602)"
-             id="use174" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(161.13281)"
-             id="use175" />
-          <use
-             xlink:href="#Helvetica-61"
-             transform="translate(188.91602)"
-             id="use176" />
-          <use
-             xlink:href="#Helvetica-69"
-             transform="translate(244.53125)"
-             id="use177" />
-          <use
-             xlink:href="#Helvetica-72"
-             transform="translate(266.74805)"
-             id="use178" />
-        </g>
+           id="g178"></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,366.362873,149.34632)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g178-txt">Still air</text>
       </g>
     </g>
     <g
@@ -1958,27 +1655,7 @@
         <!-- 0 m/s -->
         <g
            transform="matrix(0.08,0,0,-0.08,106.25846,285.55014)"
-           id="g217">
-          <use
-             xlink:href="#Helvetica-30"
-             id="use213" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(55.615234)"
-             id="use214" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(83.398438)"
-             id="use215" />
-          <use
-             xlink:href="#Helvetica-2f"
-             transform="translate(166.69922)"
-             id="use216" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(194.48242)"
-             id="use217" />
-        </g>
+           id="g217"></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,116.037757,285.55014)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g217-txt">0 m/s</text>
       </g>
     </g>
     <g
@@ -2304,46 +1981,13 @@
         <!-- 0.03 m/s -->
         <g
            transform="matrix(0.08,0,0,-0.08,351.02404,285.55014)"
-           id="g259">
-          <defs
+           id="g259"><defs
              id="defs252">
             <path
                id="Helvetica-33"
                d="M 1663,-122 Q 869,-122 511,314 153,750 153,1375 h 588 q 37,-434 162,-631 219,-353 791,-353 444,0 712,237 269,238 269,613 0,462 -283,646 -283,185 -786,185 -56,0 -114,-2 -58,-1 -117,-4 v 497 q 88,-10 147,-13 59,-3 128,-3 316,0 519,100 356,175 356,625 0,334 -238,515 -237,182 -553,182 -562,0 -778,-375 Q 838,3388 822,3006 H 266 q 0,500 200,850 343,625 1209,625 684,0 1059,-305 375,-304 375,-882 0,-413 -221,-669 -138,-159 -357,-250 353,-97 551,-374 199,-276 199,-676 0,-641 -422,-1044 -421,-403 -1196,-403 z"
                transform="scale(0.015625)" />
-          </defs>
-          <use
-             xlink:href="#Helvetica-30"
-             id="use252" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(55.615234)"
-             id="use253" />
-          <use
-             xlink:href="#Helvetica-30"
-             transform="translate(83.398438)"
-             id="use254" />
-          <use
-             xlink:href="#Helvetica-33"
-             transform="translate(139.01367)"
-             id="use255" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(194.62891)"
-             id="use256" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(222.41211)"
-             id="use257" />
-          <use
-             xlink:href="#Helvetica-2f"
-             transform="translate(305.71289)"
-             id="use258" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(333.49609)"
-             id="use259" />
-        </g>
+          </defs></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,366.363884,285.55014)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g259-txt">0.03 m/s</text>
       </g>
     </g>
     <g
@@ -2669,42 +2313,13 @@
         <!-- 0.1 m/s -->
         <g
            transform="matrix(0.08,0,0,-0.08,102.92283,421.75396)"
-           id="g300">
-          <defs
+           id="g300"><defs
              id="defs294">
             <path
                id="Helvetica-31"
                d="m 613,3169 v 431 q 609,59 849,198 241,140 360,658 h 444 V 0 h -600 v 3169 z"
                transform="scale(0.015625)" />
-          </defs>
-          <use
-             xlink:href="#Helvetica-30"
-             id="use294" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(55.615234)"
-             id="use295" />
-          <use
-             xlink:href="#Helvetica-31"
-             transform="translate(83.398438)"
-             id="use296" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(139.01367)"
-             id="use297" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(166.79687)"
-             id="use298" />
-          <use
-             xlink:href="#Helvetica-2f"
-             transform="translate(250.09766)"
-             id="use299" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(277.88086)"
-             id="use300" />
-        </g>
+          </defs></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,116.038064,421.75396)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g300-txt">0.1 m/s</text>
       </g>
     </g>
     <g
@@ -3030,35 +2645,7 @@
         <!-- 0.2 m/s -->
         <g
            transform="matrix(0.08,0,0,-0.08,353.24842,421.75396)"
-           id="g341">
-          <use
-             xlink:href="#Helvetica-30"
-             id="use335" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(55.615234)"
-             id="use336" />
-          <use
-             xlink:href="#Helvetica-32"
-             transform="translate(83.398438)"
-             id="use337" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(139.01367)"
-             id="use338" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(166.79687)"
-             id="use339" />
-          <use
-             xlink:href="#Helvetica-2f"
-             transform="translate(250.09766)"
-             id="use340" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(277.88086)"
-             id="use341" />
-        </g>
+           id="g341"></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,366.363654,421.75396)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g341-txt">0.2 m/s</text>
       </g>
     </g>
     <g
@@ -3384,35 +2971,7 @@
         <!-- 0.3 m/s -->
         <g
            transform="matrix(0.08,0,0,-0.08,102.92283,557.95779)"
-           id="g382">
-          <use
-             xlink:href="#Helvetica-30"
-             id="use376" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(55.615234)"
-             id="use377" />
-          <use
-             xlink:href="#Helvetica-33"
-             transform="translate(83.398438)"
-             id="use378" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(139.01367)"
-             id="use379" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(166.79687)"
-             id="use380" />
-          <use
-             xlink:href="#Helvetica-2f"
-             transform="translate(250.09766)"
-             id="use381" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(277.88086)"
-             id="use382" />
-        </g>
+           id="g382"></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,116.038064,557.95779)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g382-txt">0.3 m/s</text>
       </g>
     </g>
     <g
@@ -3738,42 +3297,13 @@
         <!-- 0.6 m/s -->
         <g
            transform="matrix(0.08,0,0,-0.08,353.24842,557.95779)"
-           id="g423">
-          <defs
+           id="g423"><defs
              id="defs417">
             <path
                id="Helvetica-36"
                d="m 1872,4494 q 750,0 1045,-389 296,-389 296,-802 h -557 q -50,266 -159,416 -203,281 -616,281 -472,0 -750,-436 -278,-436 -309,-1248 194,284 487,425 269,125 600,125 563,0 981,-360 419,-359 419,-1072 0,-609 -397,-1080 -396,-470 -1131,-470 -628,0 -1084,477 -456,477 -456,1605 0,834 203,1415 390,1113 1428,1113 z M 1831,384 q 444,0 664,298 221,299 221,706 0,343 -197,654 -197,311 -716,311 -362,0 -636,-241 -273,-240 -273,-724 0,-425 248,-715 249,-289 689,-289 z"
                transform="scale(0.015625)" />
-          </defs>
-          <use
-             xlink:href="#Helvetica-30"
-             id="use417" />
-          <use
-             xlink:href="#Helvetica-2e"
-             transform="translate(55.615234)"
-             id="use418" />
-          <use
-             xlink:href="#Helvetica-36"
-             transform="translate(83.398438)"
-             id="use419" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(139.01367)"
-             id="use420" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(166.79687)"
-             id="use421" />
-          <use
-             xlink:href="#Helvetica-2f"
-             transform="translate(250.09766)"
-             id="use422" />
-          <use
-             xlink:href="#Helvetica-73"
-             transform="translate(277.88086)"
-             id="use423" />
-        </g>
+          </defs></g><text xml:space="preserve" transform="matrix(0.08,0,0,0.08,366.363654,557.95779)" style="font-size:100px;font-family:Helvetica;-inkscape-font-specification:'Helvetica Bold';font-weight:bold;text-anchor:middle;stroke:none" x="0" y="0" id="g423-txt">0.6 m/s</text>
       </g>
     </g>
     <g
@@ -4103,34 +3633,13 @@
         <!-- 20 cm -->
         <g
            transform="matrix(0.055,0,0,-0.055,454.14821,659.76628)"
-           id="g463">
-          <defs
+           id="g463"><defs
              id="defs459">
             <path
                id="Helvetica-63"
                d="m 1703,3444 q 566,0 920,-275 355,-275 427,-947 h -547 q -50,309 -228,514 -178,205 -572,205 -537,0 -769,-525 -150,-341 -150,-841 0,-503 212,-847 213,-344 670,-344 350,0 554,214 205,215 283,586 h 547 Q 2956,519 2581,211 2206,-97 1622,-97 966,-97 575,383 184,863 184,1581 q 0,882 428,1372 429,491 1091,491 z m -87,-16 z"
                transform="scale(0.015625)" />
-          </defs>
-          <use
-             xlink:href="#Helvetica-32"
-             id="use459" />
-          <use
-             xlink:href="#Helvetica-30"
-             transform="translate(55.615234)"
-             id="use460" />
-          <use
-             xlink:href="#Helvetica-20"
-             transform="translate(111.23047)"
-             id="use461" />
-          <use
-             xlink:href="#Helvetica-63"
-             transform="translate(139.01367)"
-             id="use462" />
-          <use
-             xlink:href="#Helvetica-6d"
-             transform="translate(189.01367)"
-             id="use463" />
-        </g>
+          </defs></g><text xml:space="preserve" transform="matrix(0.055,0,0,0.055,461.636857,659.76628)" style="font-size:109.090911px;font-family:Helvetica;-inkscape-font-specification:Helvetica;font-weight:normal;text-anchor:middle;stroke:none" x="0" y="0" id="g463-txt">20 cm</text>
       </g>
     </g>
     <text
