@@ -75,13 +75,6 @@ supplemental:
     # notebook writes: FigureGeneration/Supplemental/sup_fig_extra_real_trajectories/combined_real_trajectories.svg
     svg: FigureGeneration/Supplemental/sup_fig_extra_real_trajectories/output_figs/combined_real_trajectories.svg
 
-  - id: supp_variable_wind_trajectories
-    name: Supp_variable_wind_trajectories
-    title: Variable-wind sample trajectories
-    script: supp_variable_wind_trajectories.sh
-    # script writes: FigureGeneration/Supplemental/sup_fig_extra_real_trajectories/variablewind_sample_trajectories.svg
-    svg: FigureGeneration/Supplemental/sup_fig_extra_real_trajectories/output_figs/variablewind_sample_trajectories.svg
-
   - id: supp_synthetic_trajectories
     name: Supp_synthetic_trajectories
     title: Synthetic trajectories

@@ -19,7 +19,6 @@ FIGURES=(
     supp_altitude_response
     supp_course_direction
     supp_extra_real_trajectories
-    supp_variable_wind_trajectories
     supp_synthetic_trajectories
     supp_sorted_trajectories
     supp_unifying_analysis_flies
