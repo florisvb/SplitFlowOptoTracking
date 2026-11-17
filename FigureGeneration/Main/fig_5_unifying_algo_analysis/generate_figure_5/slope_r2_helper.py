@@ -233,6 +233,120 @@ def get_r2_to_mean_model(unifying_algo_data, trajec_df, period_shifts=PERIOD_SHI
     return r2, shift_used
 
 
+# --------------------------------------------------------------------------------------------------
+# Held-out (cross-validated) R2 to the mean model, against overfitting
+# --------------------------------------------------------------------------------------------------
+HELDOUT_LAGS = np.arange(-100, 101, 2)  # time-alignment lags (samples at 100 Hz) searched on the training half
+HELDOUT_MIN_COVERAGE = 0.9  # a lag is allowed only if the model is defined for >= 90% of the training samples
+
+
+def _wrap(a):
+    return (a + np.pi) % (2 * np.pi) - np.pi
+
+
+def _leave_one_out_mean_models(affine_fits):
+    """Circular mean of the aligned affine fits of all OTHER trajectories, per row. Returns an array like affine_fits."""
+    s, c = np.sin(affine_fits), np.cos(affine_fits)
+    S, C = np.nansum(s, axis=0), np.nansum(c, axis=0)
+    N = np.sum(~np.isnan(affine_fits), axis=0)
+    S_loo = S[None, :] - np.nan_to_num(s)
+    C_loo = C[None, :] - np.nan_to_num(c)
+    N_loo = N[None, :] - (~np.isnan(affine_fits))
+    loo = np.arctan2(S_loo, C_loo)
+    loo[N_loo == 0] = np.nan
+    return loo
+
+
+def _fit_sign_and_lag(course_train, pos_train, model, lags=HELDOUT_LAGS):
+    """
+    Choose the mirror sign (+1/-1) and time lag of the model that minimize the mean squared angular error on the
+    training samples. Returns (sign, lag) or None if no lag has enough model coverage.
+    """
+    n_cols = len(model)
+    pos = pos_train[None, :] + lags[:, None]  # (lags, samples)
+    valid = (pos >= 0) & (pos < n_cols)
+    m = np.full(pos.shape, np.nan)
+    m[valid] = model[pos[valid]]
+    coverage = np.mean(~np.isnan(m), axis=1)
+    best = None
+    for sign in (1, -1):
+        err = np.nanmean(_wrap(course_train[None, :] - sign * m) ** 2, axis=1)
+        err[coverage < HELDOUT_MIN_COVERAGE] = np.inf
+        k = int(np.argmin(err))
+        if np.isfinite(err[k]) and (best is None or err[k] < best[0]):
+            best = (err[k], sign, int(lags[k]))
+    return None if best is None else best[1:]
+
+
+def get_heldout_r2_to_mean_model(aligned):
+    """
+    Cross-validated circular R2 of each trajectory to the mean model, with nothing about the model's prediction
+    estimated from the samples it is scored on:
+
+      - Mean model: leave-one-out circular mean of the OTHER trajectories' aligned affine fits.
+      - Two-fold split in time of the trajectory's own fit ROI (first / second half of its valid samples). On the
+        training half, the model's mirror sign and time alignment (lag) are re-estimated by least squares, replacing
+        the sign and alignment shift taken from the trajectory's own fit. The model with those settings is then
+        scored on the test half.
+      - Baseline: constant course at the circular mean of the TEST half itself (fitted in-sample, which favors the
+        baseline).
+
+    R2_cv = 1 - (SS_model,1 + SS_model,2) / (SS_const,1 + SS_const,2), summed over the two folds.
+    R2_cv > 0: the out-of-sample model predicts the course better than an in-sample constant course.
+    Returns a dict keyed by obj_id (NaN if fewer than MIN_SAMPLES valid samples or no admissible lag).
+    """
+    loo_models = _leave_one_out_mean_models(aligned['affine_fits'])
+    r2_cv = {}
+    for i, obj_id in enumerate(aligned['obj_ids']):
+        course = aligned['course'][i]
+        pos = np.where((aligned['roi'][i] == 1) & ~np.isnan(course))[0]
+        if len(pos) < MIN_SAMPLES:
+            r2_cv[obj_id] = np.nan
+            continue
+        half = len(pos) // 2
+        folds = [(pos[:half], pos[half:]), (pos[half:], pos[:half])]
+        ss_model = ss_const = 0.0
+        ok = True
+        for train, test in folds:
+            fit = _fit_sign_and_lag(course[train], train, loo_models[i])
+            if fit is None:
+                ok = False
+                break
+            sign, lag = fit
+            test_pos = test + lag
+            in_range = (test_pos >= 0) & (test_pos < len(course))
+            pred = np.full(len(test), np.nan)
+            pred[in_range] = sign * loo_models[i][test_pos[in_range]]
+            keep = ~np.isnan(pred)
+            if keep.sum() < 0.9 * len(test):
+                ok = False
+                break
+            c = course[test][keep]
+            ss_model += np.sum(_wrap(c - pred[keep]) ** 2)
+            ss_const += np.sum(_wrap(c - mean_angle(c)) ** 2)
+        r2_cv[obj_id] = 1 - ss_model / ss_const if ok and ss_const > 0 else np.nan
+    return r2_cv
+
+
+def r2_vs_constant_course_log10p(r2):
+    """
+    One p-value per regime: is the mean model a better fit than a constant-course model?
+
+    Circular R2 uses a constant-course model as its baseline: R2 = 1 - SS_model / SS_constant, where
+    SS_constant is the squared angular deviation of the course from its own circular mean over the same samples
+    (the trajectory flying at a constant heading). So R2 > 0 <=> the mean model beats the constant course for that
+    trajectory. Across trajectories (independent), one-sided exact sign test that more than half have R2 > 0, i.e.
+    that the median R2 is above 0. A sign test because R2 is bounded above by 1 but unbounded below, so
+    magnitude-based tests would be dominated by the negative tail. Use with the held-out R2
+    (get_heldout_r2_to_mean_model) to test against overfitting.
+    Returns log10 p (binomial log survival function; p underflows float64 for large regimes).
+    """
+    r2 = np.asarray(r2, dtype=float)
+    r2 = r2[r2 != 0]  # ties with the constant model carry no sign
+    k = int(np.sum(r2 > 0))
+    return scipy.stats.binom.logsf(k - 1, len(r2), 0.5) / np.log(10)  # log P(K >= k)
+
+
 def compute_slope_r2(unifying_filename, trajec_filename, label='', ylim=YLIM, period_shifts=PERIOD_SHIFTS,
                      r2_window=R2_WINDOW):
     """
@@ -242,13 +356,17 @@ def compute_slope_r2(unifying_filename, trajec_filename, label='', ylim=YLIM, pe
     trajec_df = load_trajectories(trajec_filename)
 
     slopes = get_weighted_slopes(unifying_algo_data)
-    r2, shift_used = get_r2_to_mean_model(unifying_algo_data, trajec_df, period_shifts, r2_window=r2_window)
+    r2, shift_used, aligned = get_r2_to_mean_model(unifying_algo_data, trajec_df, period_shifts, return_aligned=True,
+                                                   r2_window=r2_window)
 
     obj_ids = list(slopes.keys())
     x = np.array([r2[o] for o in obj_ids])
     y = np.array([slopes[o] for o in obj_ids])
     ok = ~np.isnan(x)
     r = {'slopes': y[ok], 'x': r2_axis_transform(x[ok]), 'x_raw': x[ok]}
+    if r2_window == 'fit_roi':
+        r2_cv = get_heldout_r2_to_mean_model(aligned)
+        r['r2_heldout'] = np.array([r2_cv[o] for o in obj_ids])[ok]  # may contain NaN
 
     n_out = np.sum((r['x'] < XLIM[0]) | (r['x'] > XLIM[1]) | (r['slopes'] > ylim[1]))
     print('%-28s n = %4d (dropped %d)  median slope = %.2f  median R2 = %.2f  outside limits: %d'
