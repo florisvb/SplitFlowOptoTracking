@@ -5,7 +5,7 @@ extract_synthetic_trajectories.py. Adapted from analyze_synthetic_template.py.
 Differences from the template (needed for the synthetic data):
   * No config.py in this repo -> paths resolved relative to this file; Gurobi license
     taken from GRB_LICENSE_FILE / default location.
-  * Synthetic trajectories are 300 frames (3 s @ 100 Hz, starting at t=0) vs ~521 frames
+  * Synthetic trajectories are ~400 frames (4 s @ 100 Hz, starting at t=0) vs ~521 frames
     for the fly data (starting at t=-0.2 s). The template windows (abs_min_ix=120,
     default min_trajec_length=321) would skip every trajectory / crash in rng.integers.
     abs_min_ix=100 keeps the "start 1.0 s into the trajectory-relative clock" choice
@@ -55,7 +55,7 @@ N_TRAJECS = 200
 PARAMS = dict(
     obj_id_key='obj_id_unique_event',
     abs_min_ix=10,          # template: 120
-    abs_max_ix=300,          # template: 500 (clamped to trajectory length anyway)
+    abs_max_ix=400,          # template: 500 (clamped to trajectory length anyway); full 4 s synthetic trajectory
     min_ix_range=190,
     max_ix_range=210,
     npoints=50,

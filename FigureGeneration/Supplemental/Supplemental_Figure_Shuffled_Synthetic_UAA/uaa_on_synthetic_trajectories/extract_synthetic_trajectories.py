@@ -1,5 +1,5 @@
 """
-Extract a random sample of synthetic trajectories from training_sims_6_classes.hdf
+Extract a random sample of synthetic trajectories from synthetic_training_simple.parquet
 and format them for the unifying algorithm analysis (uaa.run_miop_affine_fit_on_trajectories).
 
 One parquet per scenario is written to Data/Synthetic_Flies_for_Unifying/.
@@ -24,21 +24,23 @@ import pandas as pd
 from braid_analysis import flymath
 
 REPO_ROOT = Path(__file__).resolve().parents[4]  # <repo>/FigureGeneration/Supplemental/Supplemental_Figure_Shuffled_Synthetic_UAA/<this dir>/<this file>
-SRC_HDF = REPO_ROOT / 'Data' / 'Simulated_Trajectory_Data' / 'training_sims_6_classes.hdf'
+SRC_PARQUET = REPO_ROOT / 'Data' / 'Simulated_Trajectory_Data' / 'synthetic_training_simple.parquet'
 OUT_DIR = REPO_ROOT / 'Data' / 'Synthetic_Flies_for_Unifying'
 
 N_TRAJECS = 200
 SEED = 0
 
-# dataset_name in the HDF  ->  output file stem
+# `class` in the source parquet  ->  output file stem
 SCENARIOS = {
-    '150ms_to_450ms_random_turns': 'random_turns',
-    'levysmooth':                  'levy_flight',
-    'run and tumble':              'run_and_tumble',
-    'brownian':                    'brownian',
+    'random_turns':   'random_turns',
+    'levy_flight':    'levy_flight',
+    'run_and_tumble': 'run_and_tumble',
+    'brownian':       'brownian',
 }
 
-KEEP_COLS = ['time stamp', 'x', 'y', 'xvel', 'yvel', 'obj_id_unique', 'dataset_name',
+SRC_COLS = ['obj_id_unique', 'class', 'time stamp', 'x', 'y', 'xvel', 'yvel']
+
+KEEP_COLS = ['time stamp', 'x', 'y', 'xvel', 'yvel', 'obj_id_unique', 'class',
              'time_relative_to_flash', 'obj_id_unique_event',
              'course', 'course_smoothish', 'ang_vel_smoothish']
 
@@ -55,11 +57,12 @@ def format_for_uaa(df):
 
 if __name__ == '__main__':
     rng = np.random.default_rng(SEED)
-    df_all = pd.read_hdf(SRC_HDF)
+    df_all = pd.read_parquet(SRC_PARQUET, columns=SRC_COLS)
+    df_all['class'] = df_all['class'].astype(str)  # stored as categorical
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    for dataset_name, stem in SCENARIOS.items():
-        df = df_all[df_all.dataset_name == dataset_name]
+    for class_name, stem in SCENARIOS.items():
+        df = df_all[df_all['class'] == class_name]
         obj_ids = df.obj_id_unique.unique()
         chosen = rng.choice(obj_ids, size=N_TRAJECS, replace=False)
         df = df[df.obj_id_unique.isin(chosen)]
@@ -69,5 +72,5 @@ if __name__ == '__main__':
         out = OUT_DIR / f'synthetic_{stem}_n{N_TRAJECS}.parquet'
         df.to_parquet(out)
         lengths = df.groupby('obj_id_unique_event').size()
-        print(f'{dataset_name:30s} -> {out.name}: {df.obj_id_unique_event.nunique()} trajecs, '
+        print(f'{class_name:30s} -> {out.name}: {df.obj_id_unique_event.nunique()} trajecs, '
               f'length min/max {lengths.min()}/{lengths.max()}')
