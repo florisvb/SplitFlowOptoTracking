@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Supplemental: synthetic trajectories
-# Runs the plotting notebooks for this figure (no data re-analysis).
+# Runs the plotting notebook for this figure (no data re-analysis). The notebook
+# draws the finished figure (section headers, panel letters, house fonts) and
+# writes combined_synthetic_trajectories.svg next to itself.
 # Final SVG: see figures.yaml (id: supp_synthetic_trajectories).
 
 source "$(dirname "${BASH_SOURCE[0]}")/_common.sh"
