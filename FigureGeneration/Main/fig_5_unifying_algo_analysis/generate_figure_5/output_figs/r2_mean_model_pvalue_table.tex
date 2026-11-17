@@ -1,0 +1,47 @@
+\begin{table}[ht]
+\centering
+\caption{Fit of the mean unifying-algorithm model (Figure 5E) compared with a constant-course model. Circular $R^2$ is computed relative to each trajectory flying at its own circular-mean heading over the same samples (the region of interest of its own fit), so $R^2 > 0$ means the mean model fits that trajectory better than a constant course. Median $R^2$ is given with a bootstrapped 95\% CI of the median. $p$ is a one-sided exact sign test, per regime, that more than half of the trajectories have $R^2 > 0$ (i.e.\ that the median $R^2$ is above 0). Median $\log_{10} p$ across regimes: flies receiving a fictive odor $-14$ (range -96 to -5.8; 9 regimes); control flies (variable-wind sham, sham, WT flash and WT sham) $0.0$ (range -0.4 to 0.0; 15 regimes); shuffled and synthetic controls $0.0$ (range -2.4 to 0.0; 6 regimes).}
+\label{tab:mean_model_pvalues}
+\begin{tabular}{llrccrr}
+\hline
+Group & Condition & $n$ & Median $R^2$ & 95\% CI & $R^2 > 0$ & $\log_{10} p$ \\
+\hline
+Fictive odor & Still air & 200 & 0.65 & [0.54, 0.71] & 76\% & -14 \\
+ & Unsteady & 60 & 0.63 & [0.47, 0.69] & 80\% & -5.8 \\
+ & Laminar (40 cm/s) & 145 & 0.47 & [0.42, 0.55] & 79\% & -13 \\
+\hline
+Fictive odor, variable wind & 0 cm/s & 700 & 0.85 & [0.82, 0.86] & 87\% & -96 \\
+ & 3 cm/s & 491 & 0.74 & [0.68, 0.78] & 78\% & -36 \\
+ & 10 cm/s & 257 & 0.62 & [0.55, 0.65] & 74\% & -14 \\
+ & 20 cm/s & 700 & 0.63 & [0.57, 0.67] & 77\% & -48 \\
+ & 30 cm/s & 272 & 0.46 & [0.39, 0.53] & 71\% & -11 \\
+ & 60 cm/s & 241 & 0.35 & [0.24, 0.44] & 66\% & -6.1 \\
+\hline
+Sham, variable wind & 0 cm/s & 388 & -0.79 & [-1.41, -0.22] & 44\% & 0.0 \\
+ & 3 cm/s & 423 & -1.24 & [-1.75, -0.63] & 40\% & 0.0 \\
+ & 10 cm/s & 241 & -1.42 & [-1.91, -0.59] & 34\% & 0.0 \\
+ & 20 cm/s & 225 & -1.48 & [-1.99, -0.70] & 36\% & 0.0 \\
+ & 30 cm/s & 232 & -0.55 & [-0.96, -0.03] & 44\% & 0.0 \\
+ & 60 cm/s & 68 & 0.01 & [-0.30, 0.19] & 50\% & -0.3 \\
+\hline
+Sham & Still air & 192 & -0.57 & [-1.32, -0.13] & 41\% & 0.0 \\
+ & Unsteady & 85 & -0.29 & [-0.44, -0.10] & 34\% & 0.0 \\
+ & Laminar & 117 & -0.14 & [-0.49, 0.23] & 47\% & -0.1 \\
+\hline
+WT flash & Still air & 54 & -2.65 & [-3.61, -1.74] & 11\% & 0.0 \\
+ & Unsteady & 68 & -0.08 & [-0.44, 0.22] & 44\% & -0.1 \\
+ & Laminar & 138 & -0.51 & [-0.66, -0.33] & 24\% & 0.0 \\
+\hline
+WT sham & Still air & 68 & -1.85 & [-3.07, -0.66] & 25\% & 0.0 \\
+ & Unsteady & 66 & 0.04 & [-0.33, 0.21] & 53\% & -0.4 \\
+ & Laminar & 127 & -1.24 & [-1.87, -0.74] & 21\% & 0.0 \\
+\hline
+Shuffled \& synthetic & Shuf. laminar & 200 & -5.04 & [-7.28, -3.50] & 25\% & 0.0 \\
+ & Shuf. still air & 200 & -3.53 & [-5.05, -2.48] & 25\% & 0.0 \\
+ & L\'evy & 200 & -1.08 & [-1.53, -0.90] & 22\% & 0.0 \\
+ & Rand. turns & 200 & 0.14 & [0.03, 0.20] & 60\% & -2.4 \\
+ & Brownian & 200 & -0.13 & [-0.16, -0.08] & 32\% & 0.0 \\
+ & Run \& tumble & 200 & -0.09 & [-0.14, -0.05] & 32\% & 0.0 \\
+\hline
+\end{tabular}
+\end{table}
