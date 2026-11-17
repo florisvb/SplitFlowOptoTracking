@@ -9,6 +9,7 @@ begin_figure supp_shuffled_synthetic "Supplemental: unifying analysis on shuffle
 D=FigureGeneration/Supplemental/Supplemental_Figure_Shuffled_Synthetic_UAA
 
 run_notebook "$D" A_shuffled_synthetic_align_course_directions.ipynb
+run_notebook "$D" B_shuffled_trajectories.ipynb
 run_notebook "$D" C_shuffled_synthetic_slope_axis_ratio.ipynb
 run_notebook "$D" D_MI_plots_shuffled_synthetic.ipynb
 

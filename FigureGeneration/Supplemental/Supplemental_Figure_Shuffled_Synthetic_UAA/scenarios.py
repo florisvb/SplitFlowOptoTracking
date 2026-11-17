@@ -18,7 +18,7 @@ RESULTS_DIR = DATA_DIR / 'unifying_algo_results'          # made by analyze_shuf
 # Ordered left -> right in the figure
 SCENARIOS = ['shuffled_laminar', 'shuffled_stillair', 'levy_flight', 'random_turns', 'brownian', 'run_and_tumble']
 
-# Panel B splits slope and MI into two axes: the high-slope / high-MI scenarios get their own y-range
+# Panel C splits slope and MI into two axes: the high-slope / high-MI scenarios get their own y-range
 HIGH_SCENARIOS = ['brownian', 'run_and_tumble']
 LOW_SCENARIOS = [key for key in SCENARIOS if key not in HIGH_SCENARIOS]
 
@@ -86,7 +86,9 @@ def uniquify_glyph_ids(svg_filename, layer_names):
     for layer in layer_names:
         start = re.search(r'<g [^>]*id="%s"[^>]*inkscape:groupmode="layer"' % layer, s).start()
         depth = 0
-        for m in re.finditer(r'<g[ >]|</g>', s[start:]):
+        for m in re.finditer(r'<g(?:\s[^>]*)?>|</g>', s[start:]):
+            if m.group(0).endswith('/>'):
+                continue  # empty self-closing group (e.g. an axis turned off), opens nothing
             depth += 1 if m.group(0) != '</g>' else -1
             if depth == 0:
                 end = start + m.end()

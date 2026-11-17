@@ -129,7 +129,7 @@ def plot_trajectory(t, ax, hw):
     ax.set_aspect("equal")
 
 
-def add_scale_bar(ax, hw):
+def add_scale_bar(ax, hw, fontsize=5.5):
     """Scale bar just below the bottom-right trajectory axes of a panel (same data scale)."""
     x0, x1 = -hw, hw
     y0, y1 = -hw / 2, hw / 2
@@ -139,7 +139,7 @@ def add_scale_bar(ax, hw):
     ax.plot([xe - bar, xe], [yb, yb], color="k", linewidth=1.5,
             solid_capstyle="butt", clip_on=False)
     ax.text(xe - bar / 2, yb - 0.05 * (y1 - y0), f"{int(round(bar * 100))} cm",
-            ha="center", va="top", fontsize=5.5, clip_on=False)
+            ha="center", va="top", fontsize=fontsize, clip_on=False)
 
 
 def load(path):
